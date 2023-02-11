@@ -5,8 +5,11 @@ public class GameBoard {
 
     public GameBoard(int board_size) {
         gameBoard = new Character[board_size][board_size];
-        for (var x: gameBoard)
-            for (var y : x) y = MoveList.EMPTY.getValue();
+        for (int i = 0; i < gameBoard.length ; i++) {
+            for (int j = 0; j < getGameBoard()[i].length; j++) {
+                gameBoard[i][j] = MoveList.EMPTY.getValue();
+            }
+        }
     }
 
     public Character[][] getGameBoard() {
@@ -15,7 +18,10 @@ public class GameBoard {
     public Character getGameBoardItem(int x, int y) {
         return gameBoard[x][y];
     }
-    public void setGameBoardItem(int x,int y, char c) {
-        this.gameBoard[x][y] = c;
+    public boolean setGameBoardItem(int x,int y, Character c) {
+        if (getGameBoardItem(x,y) == MoveList.EMPTY.getValue()) {
+            this.gameBoard[x][y] = c;
+            return true;
+        } else return false;
     }
 }
