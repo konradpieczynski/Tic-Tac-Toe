@@ -73,7 +73,7 @@ public class TicTacToeTestSuite {
         }
 
         @Test
-        void testBoardSizeInput() {
+        void testNumberInput() {
             //Given
             String input = "4\n";
             InputStream in = new ByteArrayInputStream(input.getBytes());
@@ -86,7 +86,7 @@ public class TicTacToeTestSuite {
         }
 
         @Test
-        void testBoardSizeInputMismatch() {
+        void testNumberInputMismatch() {
             //Given
             String input = "Not number";
             InputStream in = new ByteArrayInputStream(input.getBytes());
@@ -142,8 +142,8 @@ public class TicTacToeTestSuite {
             //When
             ai.makeMove(gameBoard, MoveList.O.getValue());
             //Then
-            TerminalDisplay terminalDisplay = new TerminalDisplay();
-            terminalDisplay.Display(gameBoard);
+//            TerminalDisplay terminalDisplay = new TerminalDisplay();
+//            terminalDisplay.Display(gameBoard);
             assertFalse(Arrays.deepEquals(copyOfBoard, gameBoard.getGameBoard()));
         }
     }
