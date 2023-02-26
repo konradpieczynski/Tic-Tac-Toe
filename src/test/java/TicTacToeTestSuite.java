@@ -7,6 +7,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -79,7 +80,7 @@ public class TicTacToeTestSuite {
             System.setIn(in);
             TerminalInput terminalInput = new TerminalInput();
             //When
-            int scannedValue = terminalInput.scanBoardSize();
+            int scannedValue = terminalInput.scanNumber("board size(Values less than 3 will default to 3)");
             //Then
             assertEquals(4, scannedValue);
         }
@@ -94,7 +95,7 @@ public class TicTacToeTestSuite {
             ByteArrayOutputStream outContent = new ByteArrayOutputStream();
             System.setOut(new PrintStream(outContent));
             //When
-            terminalInput.scanBoardSize();
+            terminalInput.scanNumber("board size(Values less than 3 will default to 3)");
             //Then
             assertEquals("Please enter board size(Values less than 3 will default to 3): \n" +
                     "Please enter a number!", outContent.toString().trim());
@@ -129,6 +130,21 @@ public class TicTacToeTestSuite {
             assertEquals(1, playerList.getPlayerNumber(player1));
             assertEquals(player, playerList.getPlayer(0));
             assertEquals(player1, playerList.getPlayer(1));
+        }
+        @Test
+        void testAI(){
+            //Given
+            GameBoard gameBoard = new GameBoard(3);
+            CheckWinningConditions winConditions = new CheckWinningConditions();
+            gameBoard.setGameBoardItem(0,0,MoveList.X.getValue());
+            Character[][] copyOfBoard = Arrays.stream(gameBoard.getGameBoard()).map(Character[]::clone).toArray(Character[][]::new);
+            AI ai = new AI();
+            //When
+            ai.makeMove(gameBoard, MoveList.O.getValue());
+            //Then
+            TerminalDisplay terminalDisplay = new TerminalDisplay();
+            terminalDisplay.Display(gameBoard);
+            assertFalse(Arrays.deepEquals(copyOfBoard, gameBoard.getGameBoard()));
         }
     }
     @Nested

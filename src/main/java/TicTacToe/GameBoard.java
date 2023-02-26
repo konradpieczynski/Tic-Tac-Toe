@@ -24,4 +24,11 @@ public class GameBoard {
             return true;
         } else return false;
     }
+    public void clearBoard(){
+        for (int i = 0; i < gameBoard.length ; i++) {
+            for (int j = 0; j < getGameBoard()[i].length; j++) {
+                gameBoard[i][j] = MoveList.EMPTY.getValue();
+            }
+        }
+    }
 }

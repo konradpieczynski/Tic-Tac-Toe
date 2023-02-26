@@ -6,12 +6,12 @@ import java.util.Scanner;
 public class TerminalInput {
     Scanner scanner = new Scanner(System.in);
 
-    public int scanBoardSize(){
+    public int scanNumber(String nameOfNumber){
         int scannedValue = 0;
         boolean scanned=false;
         while(!scanned)
         {
-            System.out.println("Please enter board size(Values less than 3 will default to 3): ");
+            System.out.println("Please enter "+nameOfNumber+": ");
             try {
                 scannedValue = scanner.nextInt();
             }
@@ -24,6 +24,7 @@ public class TerminalInput {
         }
         return scannedValue;
     }
+
     public String scanPlayerName() {
         String playerName = "";
         while (playerName.equals("")) {
