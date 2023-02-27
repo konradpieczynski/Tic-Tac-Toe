@@ -19,7 +19,6 @@ public class TerminalInput {
                 System.out.println("Please enter a number!");
             }
             scanner.nextLine();
-            if (scannedValue < 3) scannedValue = 3;
             scanned = true;
         }
         return scannedValue;
