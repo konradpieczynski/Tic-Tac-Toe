@@ -10,7 +10,7 @@ public class Main {
         PlayerList playerList = new PlayerList();
         CheckWinningConditions checkWinningConditions = new CheckWinningConditions();
         boolean end=false;
-        String status = "";
+        String status;
 
         //Terminal mode
         TerminalInput terminalInput = new TerminalInput();
