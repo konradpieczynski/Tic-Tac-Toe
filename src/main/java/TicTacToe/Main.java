@@ -8,7 +8,6 @@ public class Main {
         AI ai = new AI();
         int currentPlayer;
         PlayerList playerList = new PlayerList();
-        playerList.addPlayer(new Player("Computer", true));
         CheckWinningConditions checkWinningConditions = new CheckWinningConditions();
         boolean end=false;
         String status = "";
@@ -18,6 +17,7 @@ public class Main {
         TerminalDisplay terminalDisplay = new TerminalDisplay();
         System.out.println("Welcome to tic tac toe!");
         playerList.addPlayer(new Player((terminalInput.scanPlayerName()),false));
+        playerList.addPlayer(new Player("Computer", true));
         GameBoard gameBoard =new GameBoard(terminalInput.scanNumber("board size"));
         Random random = new Random();
         int x;
@@ -33,6 +33,7 @@ public class Main {
             }
             else {
                 terminalDisplay.Display(gameBoard);
+                System.out.println(playerList.getPlayer(currentPlayer).name + "("+MoveList.values()[currentPlayer].getValue()+") turn");
                 while(!madeMove) {
                     x = terminalInput.scanNumber("x coordinate");
                     y = terminalInput.scanNumber("y coordinate(9000 to quit game)");
