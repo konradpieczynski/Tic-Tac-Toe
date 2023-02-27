@@ -18,6 +18,7 @@ public class Main {
         System.out.println("Welcome to tic tac toe!");
         playerList.addPlayer(new Player((terminalInput.scanPlayerName()),false));
         playerList.addPlayer(new Player("Computer", true));
+        playerList.addPlayer(new Player("Computer 2", true));
         GameBoard gameBoard =new GameBoard(terminalInput.scanNumber("board size"));
         Random random = new Random();
         int x;

@@ -4,7 +4,7 @@ public class GameBoard {
     Character[][] gameBoard;
 
     public GameBoard(int board_size) {
-        if (board_size < 3) board_size = 3;
+        if (board_size < 10) board_size = 10;
         gameBoard = new Character[board_size][board_size];
         for (int i = 0; i < gameBoard.length ; i++) {
             for (int j = 0; j < getGameBoard()[i].length; j++) {
